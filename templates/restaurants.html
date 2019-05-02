@@ -1,0 +1,29 @@
+<html>
+<body>
+	<div>
+		<h1>Fancy Restaurants</h1>
+		<h2>Here are your fancy options!</h2>
+		
+		{% if restaurants|length %}
+		{% for restaurant in restaurants %}
+		<div>
+			<h3>{{restaurant.name}}</h3>
+
+			{% if items|length %}
+			{% for i in items %}
+				<div>{{i.name}}</div></br>
+				<div><i>{{i.description}}</i></div></br>
+				<div>{{i.price}}</div></br></br>
+			{% endfor %}
+			{% else %}
+				<div>There's nothing on the menu! What are you serving, air?? Not fancy!</div>
+			{% endif %}
+
+		</div>
+		{% endfor %}
+		{% else %}
+				<div>There's no restaurants! Not fancy!</div>
+		{% endif %}
+	</div>
+</body>
+</html>

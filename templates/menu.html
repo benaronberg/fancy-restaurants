@@ -1,0 +1,18 @@
+<html>
+<body>
+	<div>
+		<h1>{{restaurant.name}}</h1>
+
+		{% if items|length %}
+		{% for i in items %}
+			<div>{{i.name}}</div></br>
+			<div><i>{{i.description}}</i></div></br>
+			<div>{{i.price}}</div></br></br>
+		{% endfor %}
+		{% else %}
+			<div>There's nothing on the menu! What are you serving, air?? Not fancy!</div>
+		{% endif %}
+		</div>	
+		<a href = "{{ url_for('showRestaurants')}}">Back to all Fancy Restaurants</a>
+</body>
+</html
