@@ -8,6 +8,9 @@
 			<div>{{i.name}}</div></br>
 			<div><i>{{i.description}}</i></div></br>
 			<div>{{i.price}}</div></br></br>
+			<a href='{{url_for('editMenuItem',restaurant_id = restaurant.id, menu_id=i.id)}}'>Edit</a>
+			<a href='{{url_for('deleteMenuItem', restaurant_id = restaurant.id, menu_id=i.id)}}'>Delete</a>
+			</br></br>
 		{% endfor %}
 		{% else %}
 			<div>There's nothing on the menu! What are you serving, air?? Not fancy!</div>
