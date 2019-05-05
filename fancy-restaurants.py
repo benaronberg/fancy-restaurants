@@ -27,7 +27,7 @@ def newRestaurant():
 		newRestaurant = Restaurant(name = request.form['name'])
 		session.add(newRestaurant)
 		session.commit()
-		#flash("New restaurant created! Fancy!")
+		flash("New restaurant created! Fancy!")
 		return redirect(url_for('showMenu', restaurant_id = restaurant_id))
 	else:
 		return render_template('newrestaurant.html')
@@ -41,7 +41,7 @@ def editRestaurant(restaurant_id):
 			editedRestaurant.name = request.form['name']
 		session.add(editedRestaurant)
 		session.commit()
-		#flash("Restaurant modified! Fancy!")
+		flash("Restaurant modified! Fancy!")
 		return redirect(url_for('restaurantMenu', restaurant_id = restaurant_id))
 	else:
 		return render_template('editrestaurant.html',restaurant = editedRestaurant)
@@ -53,7 +53,7 @@ def deleteRestaurant(restaurant_id):
 	if request.method == 'POST':
 		session.delete(restaurantToDelete)
 		session.commit()
-		#flash("Restaurant deleted!")
+		flash("Restaurant deleted!")
 		return redirect(url_for('showRestaurants'))
 	else:
 		return render_template('deleterestaurant.html', restaurant = restaurantToDelete)
@@ -74,7 +74,7 @@ def newMenuItem(restaurant_id):
 		newItem = MenuItem(name = request.form['name'], description = request.form['description'], price = request.form['price'], course = request.form['course'], restaurant_id = restaurant_id)
 		session.add(newItem)
 		session.commit()
-		#flash("New menu item created!")
+		flash("New menu item created!")
 		return redirect(url_for('showMenu', restaurant_id = restaurant_id))
 	else:
 		restaurant = session.query(Restaurant).filter_by(id = restaurant_id).one()
@@ -109,8 +109,8 @@ def deleteMenuItem(restaurant_id, menu_id):
 	if request.method == 'POST':
 		session.delete(itemToDelete)
 		session.commit()
-		#flash("New menu item deleted!")
-		return redirect(url_for('restaurantMenu', restaurant_id = restaurant_id))
+		flash("Menu item deleted!")
+		return redirect(url_for('showMenu', restaurant_id = restaurant_id))
 	else:
 		return render_template('deletemenuitem.html', item = itemToDelete, restaurant=restaurant)
 

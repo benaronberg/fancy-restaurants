@@ -1,4 +1,7 @@
 <html>
+<head>
+	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
+</head>
 <body>
 	<div>
 		<h1>Fancy Restaurants</h1>
@@ -13,7 +16,7 @@
 			{% for i in items %}
 				{% if i.restaurant_id == restaurant.id %}
 				<div>{{i.name}}</div></br>
-				<div><i>{{i.description}}</i></div></br>
+				<div class="description"><i>{{i.description}}</i></div></br>
 				<div>{{i.price}}</div></br></br>
 				{% endif %}
 			{% endfor %}

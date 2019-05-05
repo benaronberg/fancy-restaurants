@@ -1,4 +1,7 @@
 <html>
+<head>
+	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
+</head>
 <body>
 	<div>
 		<h1>{{restaurant.name}}</h1>
@@ -6,7 +9,7 @@
 		{% if items|length %}
 		{% for i in items %}
 			<div>{{i.name}}</div></br>
-			<div><i>{{i.description}}</i></div></br>
+			<div class="description"><i>{{i.description}}</i></div></br>
 			<div>{{i.price}}</div></br></br>
 			<a href='{{url_for('editMenuItem',restaurant_id = restaurant.id, menu_id=i.id)}}'>Edit</a>
 			<a href='{{url_for('deleteMenuItem', restaurant_id = restaurant.id, menu_id=i.id)}}'>Delete</a>
